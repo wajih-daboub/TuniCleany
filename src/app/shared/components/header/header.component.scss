@@ -1,0 +1,27 @@
+ul li {
+  list-style: none;
+}
+img {
+  width: 80px;
+  height:70px;
+  object-fit: cover;
+}
+a {
+
+  margin-right: 30px;
+margin-left: 30px;
+font-size: 15px;
+  color:#808580 !important;
+  border-bottom: 2px solid transparent;
+font-family: 'Montserrat', sans-serif;
+}
+
+a:hover {
+  border-bottom: 2px solid #2dc942;
+}
+
+.active a {
+background-color: transparent;
+
+  border-bottom: 2px solid #2dc942;
+}

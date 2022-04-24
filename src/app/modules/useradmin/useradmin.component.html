@@ -1,0 +1,119 @@
+<div>
+    <app-widget-area [data]="bigChart"></app-widget-area>
+</div>
+
+<br>
+
+<mat-divider></mat-divider>
+
+<br>
+
+<br>
+
+<p>Les informations sur la société</p>
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <div fxFlex="40">
+        <div class="mat-elevation-z8">
+            <p>Commande reçu</p>
+            <table mat-table [dataSource]="dataSource">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                </ng-container>
+
+                <!-- societe -->
+                <ng-container matColumnDef="societe">
+                    <th mat-header-cell *matHeaderCellDef> Societe </th>
+                    <td mat-cell *matCellDef="let element"> {{element.societe}} </td>
+                </ng-container>
+
+                <!-- societe -->
+                <ng-container matColumnDef="typedech">
+                    <th mat-header-cell *matHeaderCellDef> Type de dechets </th>
+                    <td mat-cell *matCellDef="let element"> {{element.typedech}} </td>
+                </ng-container>
+
+
+                <!-- poids Column -->
+                <ng-container matColumnDef="poids">
+                    <th mat-header-cell *matHeaderCellDef> Poids </th>
+                    <td mat-cell *matCellDef="let element"> {{element.poids}} </td>
+                </ng-container>
+
+            
+                <!-- transporteur Column -->
+                <ng-container matColumnDef="transporteur">
+                    <th mat-header-cell *matHeaderCellDef> Transporteur </th>
+                    <td mat-cell *matCellDef="let element"> {{element.transporteur}} </td>
+                </ng-container>
+
+                <!-- date Column -->
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+        </div>
+
+    </div>
+
+
+
+<br>
+
+<br>
+<br>
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    
+
+      <app-widget-pie [data]="pieChart"></app-widget-pie>
+    
+
+    </div>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <div fxFlex="100">
+        <div class="mat-elevation-z8">
+            <p>Les informations des societes</p>
+            <table class="table table-striped">
+                <tr>
+                    <th>Nom</th>
+                    <th>Mtaricule fiscale</th>
+                    <th>Mail</th>
+                    <th>Mot de passe</th>
+                    <th>Adresse</th>
+                    <th> Telephone</th>
+                    <th>Domaine d'activite</th>
+                    <th>Type d'autorisation</th>
+                
+                </tr>
+                <tbody *ngFor="let societe of societes">
+                    <tr>
+                        <td>{{societe.idnom}}</td>
+                        <td>{{societe.idmf}}</td>
+                        <td>{{societe.idmail}}</td>
+                        <td>{{societe.idmp}}</td>
+                        <td>{{societe.idadr}}</td>
+                        <td>{{societe.idtel}}</td>
+                        <td>{{societe.activite.nomAct}}</td>
+                        <td>{{societe.autorisation.nomAuto}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+
+   
