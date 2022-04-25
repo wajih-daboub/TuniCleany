@@ -10,57 +10,33 @@
 
 <br>
 
-<p>Les informations sur la société</p>
-<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-    <div fxFlex="40">
+<p>Information Commande et societe</p>
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="50px">
+    <div fxFlex="100">
         <div class="mat-elevation-z8">
             <p>Commande reçu</p>
-            <table mat-table [dataSource]="dataSource">
+            <table class="table table-striped">
+                <tr>
+                    <th>Nom Societe</th>
+                    <th>Type d'activite</th>
+                    <th>Emplacement</th>
+                    <th>Type de dechet</th>
+                    <th>Poids</th>
+                   
+                
+                </tr>
+                <tbody *ngFor="let Commande of commandes">
+                    <tr>
+                        <td>{{Commande.nomSociete.idnom}}</td>
+                        <td>{{Commande.activite.nomAct}}</td>
+                        <td>{{Commande.gouvernorat.nomgouv}}/{{Commande.region.nomreg}}</td>
+                        <td>{{Commande.dechet.nomdech}}/{{Commande.sous_typedech.nomstdech}}</td>
+                        <td>{{Commande.idpoids}}</td>
+                        
 
-                <!-- Position Column -->
-                <ng-container matColumnDef="position">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                </ng-container>
-
-                <!-- societe -->
-                <ng-container matColumnDef="societe">
-                    <th mat-header-cell *matHeaderCellDef> Societe </th>
-                    <td mat-cell *matCellDef="let element"> {{element.societe}} </td>
-                </ng-container>
-
-                <!-- societe -->
-                <ng-container matColumnDef="typedech">
-                    <th mat-header-cell *matHeaderCellDef> Type de dechets </th>
-                    <td mat-cell *matCellDef="let element"> {{element.typedech}} </td>
-                </ng-container>
-
-
-                <!-- poids Column -->
-                <ng-container matColumnDef="poids">
-                    <th mat-header-cell *matHeaderCellDef> Poids </th>
-                    <td mat-cell *matCellDef="let element"> {{element.poids}} </td>
-                </ng-container>
-
-            
-                <!-- transporteur Column -->
-                <ng-container matColumnDef="transporteur">
-                    <th mat-header-cell *matHeaderCellDef> Transporteur </th>
-                    <td mat-cell *matCellDef="let element"> {{element.transporteur}} </td>
-                </ng-container>
-
-                <!-- date Column -->
-                <ng-container matColumnDef="date">
-                    <th mat-header-cell *matHeaderCellDef> Date </th>
-                    <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </tr>
+                </tbody>
             </table>
-
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
-        </div>
 
     </div>
 
@@ -70,16 +46,19 @@
 
 <br>
 <br>
-<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="30px">
     
 
       <app-widget-pie [data]="pieChart"></app-widget-pie>
     
 
     </div>
-</div>
+    <br>
 
-<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <br>
+    <br>
+
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="100px">
     <div fxFlex="100">
         <div class="mat-elevation-z8">
             <p>Les informations des societes</p>
@@ -105,6 +84,7 @@
                         <td>{{societe.idtel}}</td>
                         <td>{{societe.activite.nomAct}}</td>
                         <td>{{societe.autorisation.nomAuto}}</td>
+                        <td><a class="btn btn-danger" (click)="supprimerSociete(societe)"> Supprimer</a></td>
 
                     </tr>
                 </tbody>
@@ -112,7 +92,7 @@
         </div>
 
     </div>
-
+</div>
 
 
 

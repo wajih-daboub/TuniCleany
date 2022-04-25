@@ -136,57 +136,51 @@
                       <input type="radio">Recyclage
                   <br>
                   <br>
-                   <select class="form-select" id="inputGroupSelect01">
-                     <option selected>Tunis</option>
-                     <option value="1">One</option>
-                     <option value="2">Two</option>
-                     <option value="3">Three</option>
+                   <select class="form-select" id="idgouv" name="idgouv"  [(ngModel)]="newIdgouv">
+                    <option *ngFor="let gouv of gouvernorats" [value]="gouv.idgouv" >   
+                      {{gouv.nomgouv}}
+                </option>
                    </select>
                 <br>
          
-               <select class="form-select" id="inputGroupSelect01">
-                 <option selected>Ben arous</option>
-                 <option value="1">One</option>
-                 <option value="2">Two</option>
-                 <option value="3">Three</option>
+               <select class="form-select" id="idreg" name="idreg" [(ngModel)]="newIdreg">
+                <option *ngFor="let reg of regions" [value]="reg.idreg" >   
+                  {{reg.nomreg}}
+            </option>
                </select>
                <br>
                <p id="filter">Filtrer par Type de déchet</p>
-               <select class="form-select" id="inputGroupSelect01">
-                <option selected>Type de déchet</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+               <select class="form-select" id="iddech" name="iddech" [(ngModel)]="newIddech">
+                <option *ngFor="let dech of dechets" [value]="dech.iddech" >   
+                  {{dech.nomdech}}
+            </option>
               </select>
               <br>
-              <select class="form-select" id="inputGroupSelect01">
-                <option selected>Sous type </option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select class="form-select" id="idstdech" name="idstdech" [(ngModel)]="newIdstdech" >
+                <option *ngFor="let sous_typedech of sous_typedechs" [value]="sous_typedech.idstdech" >   
+                  {{sous_typedech.nomstdech}}
+                </option>
               </select>
               <br>
               <p id="filter">Filtrer par nature d'activité</p>
-              <select class="form-select" id="inputGroupSelect01">
-                <option selected>Sous type </option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select class="form-select" id="idact" name="idact"[(ngModel)]="newIdact" >
+                <option *ngFor="let act of activites" [value]="act.idact" >   
+                  {{act.nomAct}}
+                </option>
               </select>
               <br>
               <p id="filter">Filtrer par société</p>
-              <select class="form-select" id="inputGroupSelect01">
-                <option selected>Sélectionner sociéte</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select class="form-select" id="idnom" name="idnom" [(ngModel)]="newIdsoc">
+                <option *ngFor="let soc of societes" [value]="soc.idnom" >   
+                  {{soc.idnom}}
+                </option>
               </select>
               <br>
               <p id="filter">Poids en Kg</p>     
- <input type="text" >
+               <input type="number" id="idpoids" [(ngModel)]="newCommande.idpoids" [ngModelOptions]="{standalone: true}" required >
             <br>
               <br>
-              <a routerLink="/accueil"><button type="button" class="btn btn-success">Commander</button></a>
+              <a routerLink="/accueil"><button type="button"(click)="ajouterCommande()" class="btn btn-success">Commander</button></a>
  
              </form>
                 </div>

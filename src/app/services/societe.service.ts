@@ -64,4 +64,10 @@ export class SocieteService {
     this.autorisation = this.autorisations.find(aut => aut.idauto == id);
     return this.autorisation;
   }
+  deleteSociete(societe:Societe){
+    const index =this.societes.indexOf(societe,0);
+    if(index>-1){
+      this.societes.splice(index,1);
+    }
+  }
 }
