@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
+import 'leaflet-routing-machine';
 import { Commande } from '../model/commande.model';
 import { Gouvernorat } from '../model/gouvernorat';
 import { Region } from '../model/region';
@@ -60,8 +61,111 @@ const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
   attribution: '&copy; <a href="https:// stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https:// openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http:// openstreetmap.org">0penStreetMap</a> contributors'});
 
 tiles.addTo(this.map);
-  }
 
+
+  
+  var greenIcon = L.icon({
+    iconUrl: 'assets/mylocation.png',
+   
+    iconSize:     [35, 35], // size of the icon
+   
+    iconAnchor:   [10, 10], // point of the icon which will correspond to marker's location
+   
+});
+var test = L.icon({
+  iconUrl: 'assets/recyclage.png',
+ 
+  iconSize:     [35, 35], // size of the icon
+ 
+  iconAnchor:   [10, 10], // point of the icon which will correspond to marker's location
+ 
+});
+if (!navigator.geolocation) {
+  console.log('location is not supported');
+}
+navigator.geolocation.getCurrentPosition((position) => {
+  const coords = position.coords;
+  const latLong : [number, number]=[coords.latitude, coords.longitude];
+  console.log(
+    `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
+  );
+  let marker = L.marker((latLong),{icon:greenIcon}).addTo(this.map);
+
+let popup = L.popup()
+.setLatLng(latLong)
+.setContent('Votre position actuel')
+.openOn(this.map);
+
+});
+var recy = L.icon({
+  iconUrl: 'assets/recyclage.png',
+ 
+  iconSize:     [35, 35], // size of the icon
+ 
+  iconAnchor:   [10, 10], // point of the icon which will correspond to marker's location
+ 
+});
+
+var greenIcon = L.icon({
+  iconUrl: 'assets/mylocation.png',
+ 
+  iconSize:     [35, 35], // size of the icon
+ 
+  iconAnchor:   [10, 10], // point of the icon which will correspond to marker's location
+ 
+});
+let marker1 = L.marker([37.07948364339938,9.420727781260458],{icon:recy}).addTo(this.map);
+
+this.map.on('click',<LeafletMouseEvent>(e)=>{
+  console.log(e);
+  navigator.geolocation.getCurrentPosition((position) => {
+    const coords = position.coords;
+    const latLong : [number, number]=[coords.latitude, coords.longitude];
+    console.log(
+      `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
+    );
+    let marker = L.marker((latLong),{icon:greenIcon}).addTo(this.map);
+  
+L.Routing.control({
+    waypoints: [
+      L.latLng(e.latlng.lat,e.latlng.lng),
+    L.latLng(latLong),
+     
+    ],
+
+  }).addTo(this.map);
+});
+});
+this.watchPosition();
+
+}
+
+
+watchPosition() {
+let desLat = 0;
+let desLon = 0;
+let id = navigator.geolocation.watchPosition(
+  (position) => {
+    console.log(
+      `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
+    );
+    if (position.coords.latitude === desLat) {
+      navigator.geolocation.clearWatch(id);
+    }
+  },
+  (err) => {
+    console.log(err);
+  },
+  {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+  }
+);
+
+
+}
+  
   ajouterCommande(){
     this.newGouvernorat=this.commandeService.consulterGouvernorat(this.newIdgouv);
     this.newCommande.gouvernorat=this.newGouvernorat;
