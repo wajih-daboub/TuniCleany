@@ -1,14 +1,5 @@
-<div>
-    <app-widget-area [data]="bigChart"></app-widget-area>
-</div>
 
-<br>
 
-<mat-divider></mat-divider>
-
-<br>
-
-<br>
 
 <p>Information Commande et societe</p>
 <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="50px">
@@ -41,20 +32,6 @@
     </div>
 
 
-
-<br>
-
-<br>
-<br>
-<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="30px">
-    
-
-      <app-widget-pie [data]="pieChart"></app-widget-pie>
-    
-
-    </div>
-    <br>
-
     <br>
     <br>
 
@@ -84,7 +61,7 @@
                         <td>{{societe.idtel}}</td>
                         <td>{{societe.activite.nomAct}}</td>
                         <td>{{societe.autorisation.nomAuto}}</td>
-                        <td><a class="btn btn-danger" (click)="supprimerSociete(societe)"> Supprimer</a></td>
+                        
 
                     </tr>
                 </tbody>
@@ -93,7 +70,3 @@
 
     </div>
 </div>
-
-
-
-   

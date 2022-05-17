@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { Commande } from 'src/app/model/commande.model';
+import { CommandeService } from 'src/app/services/commande.service';
 
 export interface PeriodicElement {
   societe: string;
@@ -43,13 +45,16 @@ export class DashboardComponent implements OnInit {
   bigChart = [];
   cards = [];
   pieChart = [];
+  commandes: Commande[];
 
   displayedColumns: string[] = ['position', 'societe', 'typedech', 'poids', 'transporteur', 'date'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService,private commandeService: CommandeService) { 
+    this.commandes = commandeService.listeCommande();
+  }
 
   ngOnInit() {
     this.bigChart = this.dashboardService.bigChart();
@@ -57,6 +62,11 @@ export class DashboardComponent implements OnInit {
     this.pieChart = this.dashboardService.pieChart();
 
     this.dataSource.paginator = this.paginator;
+  }
+  supprimerCommande(commande:Commande){
+    let conf= confirm("Etes-vous sûr ?");
+    if(conf)
+    this.commandeService.deleteCommande(commande);
   }
 
 }

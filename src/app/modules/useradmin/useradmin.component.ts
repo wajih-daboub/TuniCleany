@@ -43,6 +43,8 @@ export class UseradminComponent implements OnInit {
     
   }
   supprimerSociete(societe:Societe){
+    let conf= confirm("Etes-vous sûr ?");
+    if(conf)
     this.societeService.deleteSociete(societe);
   }
   

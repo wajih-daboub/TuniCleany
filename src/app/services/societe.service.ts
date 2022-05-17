@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Societe } from '../model/societe.model';
 import { Activite } from '../model/typeactivite';
@@ -13,7 +14,7 @@ export class SocieteService {
   autorisations: Autorisation[];
   autorisation = new Autorisation();
 
-  constructor() {
+  constructor(private httpclient:HttpClient) {
     this.autorisations=[
       {idauto:1,nomAuto:"la gestion des Boues de fonds de cuves"},
       {idauto:2,nomAuto:"la gestion des Catalyseurs des Véhicules"},
@@ -47,6 +48,7 @@ export class SocieteService {
 
    addSociete(societe: Societe){
      this.societes.push(societe);
+     
    }
 
    listeActivite():Activite[]{
@@ -70,4 +72,8 @@ export class SocieteService {
       this.societes.splice(index,1);
     }
   }
+  registerUser(societe:Societe){
+    console.log(societe);
+     return this.httpclient.post('baseUrl',societe);
+}
 }

@@ -9,7 +9,6 @@ export class Commande {
     idpoids:number;
     nomSociete: Societe;
     gouvernorat:Gouvernorat;
-    region:Region;
     dechet:Dechet;
     sous_typedech:Sous_typedech;
     activite: Activite;

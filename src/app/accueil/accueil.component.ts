@@ -56,9 +56,10 @@ export class AccueilComponent implements AfterViewInit {
 
    
 this.map= L.map('map').setView([36.81897  ,  10.16579], 7);
-const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+const tiles = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
   maxZoom: 20,
-  attribution: '&copy; <a href="https:// stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https:// openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http:// openstreetmap.org">0penStreetMap</a> contributors'});
+  subdomains:['mt0','mt1','mt2','mt3']
+});
 
 tiles.addTo(this.map);
 
@@ -170,7 +171,7 @@ let id = navigator.geolocation.watchPosition(
     this.newGouvernorat=this.commandeService.consulterGouvernorat(this.newIdgouv);
     this.newCommande.gouvernorat=this.newGouvernorat;
     this.newRegion=this.commandeService.consulterRegion(this.newIdreg);
-    this.newCommande.region=this.newRegion;
+    
     this.newDechet=this.commandeService.consulterDechet(this.newIddech);
     this.newCommande.dechet=this.newDechet;
     this.newSous_typedech=this.commandeService.consulterSous_typedech(this.newIdstdech);

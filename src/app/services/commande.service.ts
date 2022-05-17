@@ -28,11 +28,18 @@ export class CommandeService {
 
   constructor() { 
     this.gouvernorats=[
-      {idgouv:1,nomgouv:"Tunis"}
+      {idgouv:1,nomgouv:"Ariana"},
+      {idgouv:2,nomgouv:"Béja"},
+      {idgouv:3,nomgouv:"Ben arous"},
+      {idgouv:4,nomgouv:"Bizerte"},
+      {idgouv:5,nomgouv:"Gabés"},
+      {idgouv:6,nomgouv:"Gafsa"},{idgouv:7,nomgouv:"Jendouba"},{idgouv:8,nomgouv:"Kairouen"},{idgouv:9,nomgouv:"Kasserine"},{idgouv:10,nomgouv:"Kébili"},
+      {idgouv:11,nomgouv:"kef"},{idgouv:12,nomgouv:"Mahdia"},{idgouv:13,nomgouv:"Manouba"},{idgouv:14,nomgouv:"Médenine"},
+      {idgouv:15,nomgouv:"Monastir"},{idgouv:16,nomgouv:"Nabeul"},{idgouv:17,nomgouv:"Sfax"},{idgouv:18,nomgouv:"Sidi Bouzid"},
+      {idgouv:19,nomgouv:"Siliana"},{idgouv:20,nomgouv:"Sousse"},{idgouv:21,nomgouv:"Tataouine"},{idgouv:22,nomgouv:"Tozeur"},
+      {idgouv:23,nomgouv:"Tunis"},{idgouv:24,nomgouv:"Zaghouen"}
     ]
-    this.regions=[
-      {idreg:1,nomreg:"Ben arous"}
-    ]
+   
     this.dechets=[
       {iddech:1,nomdech:"Dasr"}
     ]
@@ -41,18 +48,39 @@ export class CommandeService {
     ]
 
     this.activites=[
-      {idact:1,nomAct:"Productive"}
+      {idact:1,nomAct:"Productive"},{idact:2,nomAct:"Collecte et traitement"},{idact:3,nomAct:"Recyclage"}
     ]
 
     this.nomSocietes=[
       { idnom: 'tunicleany', idmf: 'a125a25', idmail: 'lil@lil.com', idmp: '000000',idrmp:'00000', idadr: '14rue', idtel: 2525, activite:{idact:1,nomAct:"Productive"},
+      autorisation:{idauto:1,nomAuto:"la gestion des Boues de fonds de cuves"}},
+
+      { idnom: 'Anged', idmf: 'a125a25', idmail: 'lil@lil.com', idmp: '000000',idrmp:'00000', idadr: '14rue', idtel: 2525, activite:{idact:1,nomAct:"Productive"},
+      autorisation:{idauto:1,nomAuto:"la gestion des Boues de fonds de cuves"}},
+
+      { idnom: 'Hôpital', idmf: 'a125a25', idmail: 'lil@lil.com', idmp: '000000',idrmp:'00000', idadr: '14rue', idtel: 2525, activite:{idact:1,nomAct:"Productive"},
+      autorisation:{idauto:1,nomAuto:"la gestion des Boues de fonds de cuves"}},
+
+      { idnom: 'Usine', idmf: 'a125a25', idmail: 'lil@lil.com', idmp: '000000',idrmp:'00000', idadr: '14rue', idtel: 2525, activite:{idact:1,nomAct:"Productive"},
       autorisation:{idauto:1,nomAuto:"la gestion des Boues de fonds de cuves"}}
 
     ]
 
     this.commandes=[
-      {idpoids:50,nomSociete:{ idnom: 'tunicleany', idmf: 'a125a25', idmail: 'lil@lil.com', idmp: '000000',idrmp:'00000', idadr: '14rue', idtel: 2525, activite:{idact:1,nomAct:"Productive"},
-      autorisation:{idauto:1,nomAuto:"la gestion des Boues de fonds de cuves"}},gouvernorat:{idgouv:1,nomgouv:"Tunis"},region:{idreg:1,nomreg:"Ben arous"},dechet:{iddech:1,nomdech:"Dasr"},
+      {idpoids:100,nomSociete:{ idnom: 'Anged', idmf: 'a125a25', idmail: 'Anged@gmail.com', idmp: '000000',idrmp:'00000', idadr: 'Tunis', idtel: 717171771, activite:{idact:1,nomAct:"Traitement"},
+      autorisation:{idauto:1,nomAuto:"la gestion des Boues de fonds de cuves"}},gouvernorat:{idgouv:1,nomgouv:"Ariana"},dechet:{iddech:1,nomdech:"Dasr"},
+       sous_typedech:{idstdech:1,nomstdech:"Dasri"},activite:{idact:1,nomAct:"Productive"}
+     },
+     {idpoids:50,nomSociete:{ idnom: 'Hôpital', idmf: 'a125a25', idmail: 'lil@lil.com', idmp: '000000',idrmp:'00000', idadr: '14rue', idtel: 2525, activite:{idact:1,nomAct:"Productive"},
+      autorisation:{idauto:1,nomAuto:"la gestion des Boues de fonds de cuves"}},gouvernorat:{idgouv:1,nomgouv:"Ariana"},dechet:{iddech:1,nomdech:"Dasr"},
+       sous_typedech:{idstdech:1,nomstdech:"Dasri"},activite:{idact:1,nomAct:"Productive"}
+     },
+     {idpoids:50,nomSociete:{ idnom: 'Usine', idmf: 'a125a25', idmail: 'lil@lil.com', idmp: '000000',idrmp:'00000', idadr: '14rue', idtel: 2525, activite:{idact:1,nomAct:"Productive"},
+      autorisation:{idauto:1,nomAuto:"la gestion des Boues de fonds de cuves"}},gouvernorat:{idgouv:1,nomgouv:"Ariana"},dechet:{iddech:1,nomdech:"Dasr"},
+       sous_typedech:{idstdech:1,nomstdech:"Dasri"},activite:{idact:1,nomAct:"Productive"}
+     },
+     {idpoids:50,nomSociete:{ idnom: 'Client', idmf: 'a125a25', idmail: 'lil@lil.com', idmp: '000000',idrmp:'00000', idadr: '14rue', idtel: 2525, activite:{idact:1,nomAct:"Productive"},
+      autorisation:{idauto:1,nomAuto:"la gestion des Boues de fonds de cuves"}},gouvernorat:{idgouv:1,nomgouv:"Ariana"},dechet:{iddech:1,nomdech:"Dasr"},
        sous_typedech:{idstdech:1,nomstdech:"Dasri"},activite:{idact:1,nomAct:"Productive"}
      }
     ];
@@ -107,6 +135,12 @@ export class CommandeService {
     this.nomSociete=this.nomSocietes.find(soc =>soc.idnom==id)
     return this.nomSociete;
 
+  }
+  deleteCommande(commande:Commande){
+    const index =this.commandes.indexOf(commande,0);
+    if(index>-1){
+      this.commandes.splice(index,1);
+    }
   }
 
 }

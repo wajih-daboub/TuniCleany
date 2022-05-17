@@ -139,14 +139,7 @@
                    <select class="form-select" id="idgouv" name="idgouv"  [(ngModel)]="newIdgouv">
                     <option *ngFor="let gouv of gouvernorats" [value]="gouv.idgouv" >   
                       {{gouv.nomgouv}}
-                </option>
-                   </select>
-                <br>
-         
-               <select class="form-select" id="idreg" name="idreg" [(ngModel)]="newIdreg">
-                <option *ngFor="let reg of regions" [value]="reg.idreg" >   
-                  {{reg.nomreg}}
-            </option>
+                
                </select>
                <br>
                <p id="filter">Filtrer par Type de déchet</p>

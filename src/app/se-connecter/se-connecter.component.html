@@ -16,7 +16,7 @@
 							<img src="assets/images/Tunicleany.png" width="120px">
 						</div>
 						
-						<form action="#" (ngSubmit)="userLogin()">
+						<form class="was-validated" action="#" (ngSubmit)="userLogin()">
 						
 
                               <div class="input-group ">
@@ -27,7 +27,7 @@
                                       </svg>
                                 </span>
                                 </div>
-                                <input id="mail"  class="form-control main" type="email" placeholder=" E-mail" [(ngModel)]="user.mail" [ngModelOptions]="{standalone: true}" required>
+                                <input id="mail"  class="form-control main" type="email" placeholder=" E-mail" [(ngModel)]="user.mail" [ngModelOptions]="{standalone: true}" required pattern="Admin@admin.com|Ministere|Societe">
                                 
                               </div>
                     
@@ -49,8 +49,16 @@
                                 
                               </div>
 
-							  <a routerLink="/accueil"><button type="button" class="btn btn-outline-success">Se Connecter</button></a>
+							  
+                
+                <a routerLink="/accueil"><button type="button" class="btn btn-outline-success">Se Connecter</button></a>
 							  <br>
+                <br>
+                <a routerLink="/dashboard/useradmin"><button type="button" class="btn btn-outline-success">Connecter en tant que admin</button></a>
+                <br>
+							  <br>
+                <a routerLink="/dashboard/ministere"><button type="button" class="btn btn-outline-success">Connecter en tant que ministere</button></a>
+                <br>
 							  <br>
 							  <a routerLink="/creeruncompte"><button type="button" class="btn btn-outline-success">Créer un compte</button></a>
 						</form>
